@@ -33,7 +33,6 @@
 #include "src/base/build_config.h"
 #include "src/base/compiler-specific.h"
 #include "src/base/macros.h"
-#include "src/base/platform/mutex.h"
 #include "src/base/platform/semaphore.h"
 #include "testing/gtest/include/gtest/gtest_prod.h"  // nogncheck
 
@@ -359,6 +358,8 @@ class V8_BASE_EXPORT OS {
   static void SetDataReadOnly(void* address, size_t size);
 
  private:
+  static int GetCurrentThreadIdInternal();
+
   // These classes use the private memory management API below.
   friend class AddressSpaceReservation;
   friend class MemoryMappedFile;
